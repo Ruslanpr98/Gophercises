@@ -10,17 +10,18 @@ import (
 
 
 func main() {
-    // open file
+    answer := ""
+    counter := 0
     f, err := os.Open("problem.csv")
+    
     if err != nil {
         log.Fatal(err)
-    }
+    }    
 
-    // remember to close the file at the end of the program
     defer f.Close()
-
-    // read csv values using csv.Reader
+    
     csvReader := csv.NewReader(f)
+    
     for {
         rec, err := csvReader.Read()
         if err == io.EOF {
@@ -29,7 +30,12 @@ func main() {
         if err != nil {
             log.Fatal(err)
         }
-        // do something with read line
-        fmt.Printf("%+v\n", rec)
+        
+        fmt.Printf("%+v\n", rec[0])
+        fmt.Scanf("%v", &answer)
+        if answer == rec[1] {
+            counter++
+        } 
     }
+    fmt.Printf("You have answered correct %d times\n", counter)
 }

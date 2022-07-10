@@ -6,13 +6,16 @@ import (
 	"log"
 	"io"
 	"os"
+    "flag"
 )
 
 
 func main() {
     answer := ""
     counter := 0
-    f, err := os.Open("problem.csv")
+    wordPtr := flag.String("file", "problem.csv", "file with a quiz")
+    flag.Parse()
+    f, err := os.Open(*wordPtr)
     
     if err != nil {
         log.Fatal(err)

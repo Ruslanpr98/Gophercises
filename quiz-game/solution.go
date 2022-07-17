@@ -16,8 +16,9 @@ func main() {
     process_file(answer, counter)
 }
 
-func check_err (err error) {
+func check_err(err error) {
     if err != nil {
+        fmt.Println("Something went wrong:", err)
         log.Fatal(err)
     }
 }

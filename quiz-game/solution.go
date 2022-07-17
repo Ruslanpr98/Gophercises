@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
     "flag"
+    "strings"
 )
 
 
@@ -34,6 +35,7 @@ func process_file(answer string, counter int) {
     
     csvReader := csv.NewReader(f)
     
+    index := 0
     for {
         rec, err := csvReader.Read()
         if err == io.EOF {
@@ -41,14 +43,15 @@ func process_file(answer string, counter int) {
         }
         check_err(err)
         
-        fmt.Printf("%+v\n", rec[0])
+        fmt.Printf("Problem %d %+v = ", index+1, rec[0])
         _, err = fmt.Scanf("%v", &answer)
 
         check_err(err)
 
-        if answer == rec[1] {
+        if strings.TrimSpace(answer) == rec[1] {
             counter++
-        } 
+        }
+        index++ 
     }
     fmt.Printf("You have answered correct %d times\n", counter)
 }

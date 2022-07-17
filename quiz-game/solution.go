@@ -13,13 +13,21 @@ import (
 func main() {
     answer := ""
     counter := 0
+    process_file(answer, counter)
+}
+
+func check_err (err error) {
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+
+func process_file(answer string, counter int) {
     wordPtr := flag.String("file", "problem.csv", "file with a quiz")
     flag.Parse()
     f, err := os.Open(*wordPtr)
     
-    if err != nil {
-        log.Fatal(err)
-    }    
+    check_err(err)  
 
     defer f.Close()
     
@@ -30,12 +38,13 @@ func main() {
         if err == io.EOF {
             break
         }
-        if err != nil {
-            log.Fatal(err)
-        }
+        check_err(err)
         
         fmt.Printf("%+v\n", rec[0])
-        fmt.Scanf("%v", &answer)
+        _, err = fmt.Scanf("%v", &answer)
+
+        check_err(err)
+
         if answer == rec[1] {
             counter++
         } 

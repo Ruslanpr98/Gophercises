@@ -8,6 +8,7 @@ import (
 	"os"
     "flag"
     "strings"
+    //"time"
 )
 
 
@@ -34,6 +35,8 @@ func process_file(answer string, counter int) {
     defer f.Close()
     
     csvReader := csv.NewReader(f)
+
+    
     
     index := 0
     for {

@@ -1,1 +1,1 @@
-A simple url_shortener
+A simple url_shortener for shorting and redirecting purposes

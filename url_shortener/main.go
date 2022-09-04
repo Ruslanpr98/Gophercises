@@ -27,23 +27,23 @@ func main() {
 	// if err != nil {
 	// 	panic(err)
 	// }
-	json :=
-		`[
-			{
-				"path": "/urlShort",
-				"url": "https://github.com/gophercises/urlshort"
-			},
-			{
-				"path": "/urlshortFinal",
-				"url": "https://github.com/gophercises/urlshort/tree/solution"
-			}
-		]`
-	jsonHandler, err := urlshort.JSONHandler([]byte(json), mapHandler)
-	if err != nil {
-		panic(err)
-	}
+	// json :=
+	// 	`[
+	// 		{
+	// 			"path": "/urlShort",
+	// 			"url": "https://github.com/gophercises/urlshort"
+	// 		},
+	// 		{
+	// 			"path": "/urlshortFinal",
+	// 			"url": "https://github.com/gophercises/urlshort/tree/solution"
+	// 		}
+	// 	]`
+	// jsonHandler, err := urlshort.JSONHandler([]byte(json), mapHandler)
+	// if err != nil {
+	// 	panic(err)
+	// }
 	fmt.Println("Starting the server on :8080")
-	http.ListenAndServe(":8080", jsonHandler)
+	http.ListenAndServe(":8080", mapHandler)
 }
 
 func defaultMux() *http.ServeMux {
